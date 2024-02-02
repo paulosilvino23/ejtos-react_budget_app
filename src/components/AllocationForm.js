@@ -62,10 +62,13 @@ const AllocationForm = (props) => {
                     <input
                         required='required'
                         type='number'
+                        pattern="[0-9]*"
                         id='cost'
                         value={cost}
                         style={{ marginLeft: '2rem' , size: 10}}
-                        onChange={(event) => setCost(event.target.value)}>
+                        onChange={(event) => { if(event.target.validity.valid) { setCost(event.target.value); } else { alert("The value must be a number! Try again"); return; } } }
+                      //onChange={(event) => setCost((v) => (event.target.validity.valid ? event.target.value : v)) }
+                        >
                         </input>
 
                     <button className="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem' }}>
