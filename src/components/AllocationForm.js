@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 
 const AllocationForm = (props) => {
-    const { dispatch,remaining  } = useContext(AppContext);
+    const { dispatch, remaining, Location } = useContext(AppContext);
 
     const [name, setName] = useState('');
     const [cost, setCost] = useState('');
@@ -58,14 +58,14 @@ const AllocationForm = (props) => {
                         <option defaultValue value="Add" name="Add">Add</option>
                 <option value="Reduce" name="Reduce">Reduce</option>
                   </select>
-
+                    <span style={{ marginLeft: '2rem'}}> {Location} </span>
                     <input
                         required='required'
                         type='number'
                         pattern="[0-9]*"
                         id='cost'
                         value={cost}
-                        style={{ marginLeft: '2rem' , size: 10}}
+                        style={{size: 10}}
                         onChange={(event) => { if(event.target.validity.valid) { setCost(event.target.value); } else { alert("The value must be a number! Try again"); return; } } }
                       //onChange={(event) => setCost((v) => (event.target.validity.valid ? event.target.value : v)) }
                         >
