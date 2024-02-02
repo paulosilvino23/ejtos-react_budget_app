@@ -6,6 +6,11 @@ const Budget = () => {
     const { budget } = useContext(AppContext);
     const [newBudget, setNewBudget] = useState(budget);
     const handleBudgetChange = (event) => {
+        
+        if(event.target.value > 20000) {
+            alert("Value budget max exceeded!");
+            return;
+        }
         setNewBudget(event.target.value);
     }
     return (
